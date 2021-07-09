@@ -6,7 +6,12 @@ part 'models.g.dart';
 @freezed
 class Response<T> with _$Response<T> {
   factory Response.ok(T data) = OkResponse;
-  factory Response.error(String message) = ErrorResponse;
+
+  factory Response.error(
+    String message, {
+    int? statusCode,
+    Map<String, dynamic>? data,
+  }) = ErrorResponse;
 }
 
 @freezed

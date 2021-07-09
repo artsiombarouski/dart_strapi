@@ -22,9 +22,12 @@ class _$ResponseTearOff {
     );
   }
 
-  ErrorResponse<T> error<T>(String message) {
+  ErrorResponse<T> error<T>(String message,
+      {int? statusCode, Map<String, dynamic>? data}) {
     return ErrorResponse<T>(
       message,
+      statusCode: statusCode,
+      data: data,
     );
   }
 }
@@ -37,13 +40,17 @@ mixin _$Response<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) ok,
-    required TResult Function(String message) error,
+    required TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? ok,
-    TResult Function(String message)? error,
+    TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,7 +149,9 @@ class _$OkResponse<T> implements OkResponse<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) ok,
-    required TResult Function(String message) error,
+    required TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)
+        error,
   }) {
     return ok(data);
   }
@@ -151,7 +160,9 @@ class _$OkResponse<T> implements OkResponse<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? ok,
-    TResult Function(String message)? error,
+    TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
+        error,
     required TResult orElse(),
   }) {
     if (ok != null) {
@@ -197,7 +208,7 @@ abstract class $ErrorResponseCopyWith<T, $Res> {
   factory $ErrorResponseCopyWith(
           ErrorResponse<T> value, $Res Function(ErrorResponse<T>) then) =
       _$ErrorResponseCopyWithImpl<T, $Res>;
-  $Res call({String message});
+  $Res call({String message, int? statusCode, Map<String, dynamic>? data});
 }
 
 /// @nodoc
@@ -214,26 +225,40 @@ class _$ErrorResponseCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? message = freezed,
+    Object? statusCode = freezed,
+    Object? data = freezed,
   }) {
     return _then(ErrorResponse<T>(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      statusCode: statusCode == freezed
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
 
 /// @nodoc
 class _$ErrorResponse<T> implements ErrorResponse<T> {
-  _$ErrorResponse(this.message);
+  _$ErrorResponse(this.message, {this.statusCode, this.data});
 
   @override
   final String message;
+  @override
+  final int? statusCode;
+  @override
+  final Map<String, dynamic>? data;
 
   @override
   String toString() {
-    return 'Response<$T>.error(message: $message)';
+    return 'Response<$T>.error(message: $message, statusCode: $statusCode, data: $data)';
   }
 
   @override
@@ -241,12 +266,21 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
     return identical(this, other) ||
         (other is ErrorResponse<T> &&
             (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+                const DeepCollectionEquality()
+                    .equals(other.message, message)) &&
+            (identical(other.statusCode, statusCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.statusCode, statusCode)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(message) ^
+      const DeepCollectionEquality().hash(statusCode) ^
+      const DeepCollectionEquality().hash(data);
 
   @JsonKey(ignore: true)
   @override
@@ -257,20 +291,24 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) ok,
-    required TResult Function(String message) error,
+    required TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)
+        error,
   }) {
-    return error(message);
+    return error(message, statusCode, data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? ok,
-    TResult Function(String message)? error,
+    TResult Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, statusCode, data);
     }
     return orElse();
   }
@@ -299,9 +337,12 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
 }
 
 abstract class ErrorResponse<T> implements Response<T> {
-  factory ErrorResponse(String message) = _$ErrorResponse<T>;
+  factory ErrorResponse(String message,
+      {int? statusCode, Map<String, dynamic>? data}) = _$ErrorResponse<T>;
 
   String get message => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ErrorResponseCopyWith<T, ErrorResponse<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -427,9 +468,8 @@ class __$EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Entry implements _Entry {
   _$_Entry({required this.collectionName, required this.id, this.data});
 
@@ -612,9 +652,8 @@ class _$IntIdentifierCopyWithImpl<$Res> extends _$IdentifierCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$IntIdentifier implements IntIdentifier {
   _$IntIdentifier(this.id);
 
@@ -740,9 +779,8 @@ class _$StringIdentifierCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$StringIdentifier implements StringIdentifier {
   _$StringIdentifier(this.id);
 

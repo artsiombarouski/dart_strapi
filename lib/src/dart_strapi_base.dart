@@ -175,7 +175,7 @@ class Strapi {
           .toList();
       return models.OkResponse(entries);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -205,7 +205,7 @@ class Strapi {
         ),
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -228,7 +228,7 @@ class Strapi {
       }
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -269,7 +269,7 @@ class Strapi {
         ),
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -303,7 +303,7 @@ class Strapi {
         ),
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -346,7 +346,7 @@ class Strapi {
         ),
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -368,7 +368,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -397,7 +397,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -416,34 +416,41 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
   /// Local register
   /// {@macro authTokenUse}
   Future<models.Response<Object>> register(
-    String username,
-    String email,
+    String? username,
+    String? email,
     String password, {
+    Map<String, dynamic>? data,
     Options? options,
   }) async {
     try {
+      final resultData = {
+        if (data != null) ...data,
+      };
+      resultData['password'] = password;
+      if (username != null) {
+        resultData['username'] = username;
+      }
+      if (email != null) {
+        resultData['email'] = email;
+      }
       final response = await _httpClient.post(
         '$base_url/auth/local/register',
         options: options,
-        data: {
-          'username': username,
-          'email': email,
-          'password': password,
-        },
+        data: resultData,
       );
 
       return models.OkResponse(
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -468,7 +475,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -490,7 +497,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -515,7 +522,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -537,7 +544,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -555,7 +562,7 @@ class Strapi {
         response.data,
       );
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -575,7 +582,7 @@ class Strapi {
 
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -597,7 +604,7 @@ class Strapi {
 
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -619,7 +626,7 @@ class Strapi {
 
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -641,7 +648,7 @@ class Strapi {
 
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
   }
 
@@ -663,7 +670,18 @@ class Strapi {
 
       return models.OkResponse(response.data);
     } catch (e) {
-      return models.ErrorResponse(e.toString());
+      return _handleError(e);
     }
+  }
+
+  models.Response<T> _handleError<T>(dynamic e) {
+    if (e is Response<dynamic>) {
+      return models.ErrorResponse(
+        e.toString(),
+        statusCode: e.statusCode,
+        data: e.data,
+      );
+    }
+    return models.ErrorResponse(e.toString());
   }
 }
