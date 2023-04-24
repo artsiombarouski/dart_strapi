@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'models.dart';
 
@@ -10,38 +12,24 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ResponseTearOff {
-  const _$ResponseTearOff();
-
-  OkResponse<T> ok<T>(T data) {
-    return OkResponse<T>(
-      data,
-    );
-  }
-
-  ErrorResponse<T> error<T>(String message,
-      {int? statusCode, Map<String, dynamic>? data}) {
-    return ErrorResponse<T>(
-      message,
-      statusCode: statusCode,
-      data: data,
-    );
-  }
-}
-
-/// @nodoc
-const $Response = _$ResponseTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Response<T> {
+  Object? get data => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) ok,
     required TResult Function(
             String message, int? statusCode, Map<String, dynamic>? data)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? ok,
+    TResult? Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +49,12 @@ mixin _$Response<T> {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkResponse<T> value)? ok,
+    TResult? Function(ErrorResponse<T> value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OkResponse<T> value)? ok,
     TResult Function(ErrorResponse<T> value)? error,
@@ -73,42 +67,44 @@ mixin _$Response<T> {
 abstract class $ResponseCopyWith<T, $Res> {
   factory $ResponseCopyWith(
           Response<T> value, $Res Function(Response<T>) then) =
-      _$ResponseCopyWithImpl<T, $Res>;
+      _$ResponseCopyWithImpl<T, $Res, Response<T>>;
 }
 
 /// @nodoc
-class _$ResponseCopyWithImpl<T, $Res> implements $ResponseCopyWith<T, $Res> {
+class _$ResponseCopyWithImpl<T, $Res, $Val extends Response<T>>
+    implements $ResponseCopyWith<T, $Res> {
   _$ResponseCopyWithImpl(this._value, this._then);
 
-  final Response<T> _value;
   // ignore: unused_field
-  final $Res Function(Response<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $OkResponseCopyWith<T, $Res> {
-  factory $OkResponseCopyWith(
-          OkResponse<T> value, $Res Function(OkResponse<T>) then) =
-      _$OkResponseCopyWithImpl<T, $Res>;
+abstract class _$$OkResponseCopyWith<T, $Res> {
+  factory _$$OkResponseCopyWith(
+          _$OkResponse<T> value, $Res Function(_$OkResponse<T>) then) =
+      __$$OkResponseCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({T data});
 }
 
 /// @nodoc
-class _$OkResponseCopyWithImpl<T, $Res> extends _$ResponseCopyWithImpl<T, $Res>
-    implements $OkResponseCopyWith<T, $Res> {
-  _$OkResponseCopyWithImpl(
-      OkResponse<T> _value, $Res Function(OkResponse<T>) _then)
-      : super(_value, (v) => _then(v as OkResponse<T>));
+class __$$OkResponseCopyWithImpl<T, $Res>
+    extends _$ResponseCopyWithImpl<T, $Res, _$OkResponse<T>>
+    implements _$$OkResponseCopyWith<T, $Res> {
+  __$$OkResponseCopyWithImpl(
+      _$OkResponse<T> _value, $Res Function(_$OkResponse<T>) _then)
+      : super(_value, _then);
 
-  @override
-  OkResponse<T> get _value => super._value as OkResponse<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(OkResponse<T>(
-      data == freezed
+    return _then(_$OkResponse<T>(
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
@@ -117,6 +113,7 @@ class _$OkResponseCopyWithImpl<T, $Res> extends _$ResponseCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$OkResponse<T> implements OkResponse<T> {
   _$OkResponse(this.data);
 
@@ -131,19 +128,20 @@ class _$OkResponse<T> implements OkResponse<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is OkResponse<T> &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+        (other.runtimeType == runtimeType &&
+            other is _$OkResponse<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
-  $OkResponseCopyWith<T, OkResponse<T>> get copyWith =>
-      _$OkResponseCopyWithImpl<T, OkResponse<T>>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$OkResponseCopyWith<T, _$OkResponse<T>> get copyWith =>
+      __$$OkResponseCopyWithImpl<T, _$OkResponse<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -154,6 +152,17 @@ class _$OkResponse<T> implements OkResponse<T> {
         error,
   }) {
     return ok(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? ok,
+    TResult? Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
+        error,
+  }) {
+    return ok?.call(data);
   }
 
   @override
@@ -182,6 +191,15 @@ class _$OkResponse<T> implements OkResponse<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkResponse<T> value)? ok,
+    TResult? Function(ErrorResponse<T> value)? error,
+  }) {
+    return ok?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OkResponse<T> value)? ok,
     TResult Function(ErrorResponse<T> value)? error,
@@ -195,50 +213,50 @@ class _$OkResponse<T> implements OkResponse<T> {
 }
 
 abstract class OkResponse<T> implements Response<T> {
-  factory OkResponse(T data) = _$OkResponse<T>;
+  factory OkResponse(final T data) = _$OkResponse<T>;
 
-  T get data => throw _privateConstructorUsedError;
+  @override
+  T get data;
   @JsonKey(ignore: true)
-  $OkResponseCopyWith<T, OkResponse<T>> get copyWith =>
+  _$$OkResponseCopyWith<T, _$OkResponse<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ErrorResponseCopyWith<T, $Res> {
-  factory $ErrorResponseCopyWith(
-          ErrorResponse<T> value, $Res Function(ErrorResponse<T>) then) =
-      _$ErrorResponseCopyWithImpl<T, $Res>;
+abstract class _$$ErrorResponseCopyWith<T, $Res> {
+  factory _$$ErrorResponseCopyWith(
+          _$ErrorResponse<T> value, $Res Function(_$ErrorResponse<T>) then) =
+      __$$ErrorResponseCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({String message, int? statusCode, Map<String, dynamic>? data});
 }
 
 /// @nodoc
-class _$ErrorResponseCopyWithImpl<T, $Res>
-    extends _$ResponseCopyWithImpl<T, $Res>
-    implements $ErrorResponseCopyWith<T, $Res> {
-  _$ErrorResponseCopyWithImpl(
-      ErrorResponse<T> _value, $Res Function(ErrorResponse<T>) _then)
-      : super(_value, (v) => _then(v as ErrorResponse<T>));
+class __$$ErrorResponseCopyWithImpl<T, $Res>
+    extends _$ResponseCopyWithImpl<T, $Res, _$ErrorResponse<T>>
+    implements _$$ErrorResponseCopyWith<T, $Res> {
+  __$$ErrorResponseCopyWithImpl(
+      _$ErrorResponse<T> _value, $Res Function(_$ErrorResponse<T>) _then)
+      : super(_value, _then);
 
-  @override
-  ErrorResponse<T> get _value => super._value as ErrorResponse<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
     Object? statusCode = freezed,
     Object? data = freezed,
   }) {
-    return _then(ErrorResponse<T>(
-      message == freezed
+    return _then(_$ErrorResponse<T>(
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      statusCode: statusCode == freezed
+      statusCode: freezed == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int?,
-      data: data == freezed
-          ? _value.data
+      data: freezed == data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
     ));
@@ -246,15 +264,25 @@ class _$ErrorResponseCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$ErrorResponse<T> implements ErrorResponse<T> {
-  _$ErrorResponse(this.message, {this.statusCode, this.data});
+  _$ErrorResponse(this.message,
+      {this.statusCode, final Map<String, dynamic>? data})
+      : _data = data;
 
   @override
   final String message;
   @override
   final int? statusCode;
+  final Map<String, dynamic>? _data;
   @override
-  final Map<String, dynamic>? data;
+  Map<String, dynamic>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
@@ -264,28 +292,23 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ErrorResponse<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality()
-                    .equals(other.message, message)) &&
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorResponse<T> &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.statusCode, statusCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusCode, statusCode)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+                other.statusCode == statusCode) &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(statusCode) ^
-      const DeepCollectionEquality().hash(data);
+  int get hashCode => Object.hash(runtimeType, message, statusCode,
+      const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
-  $ErrorResponseCopyWith<T, ErrorResponse<T>> get copyWith =>
-      _$ErrorResponseCopyWithImpl<T, ErrorResponse<T>>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ErrorResponseCopyWith<T, _$ErrorResponse<T>> get copyWith =>
+      __$$ErrorResponseCopyWithImpl<T, _$ErrorResponse<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -296,6 +319,17 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
         error,
   }) {
     return error(message, statusCode, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? ok,
+    TResult? Function(
+            String message, int? statusCode, Map<String, dynamic>? data)?
+        error,
+  }) {
+    return error?.call(message, statusCode, data);
   }
 
   @override
@@ -324,6 +358,15 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkResponse<T> value)? ok,
+    TResult? Function(ErrorResponse<T> value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OkResponse<T> value)? ok,
     TResult Function(ErrorResponse<T> value)? error,
@@ -337,41 +380,22 @@ class _$ErrorResponse<T> implements ErrorResponse<T> {
 }
 
 abstract class ErrorResponse<T> implements Response<T> {
-  factory ErrorResponse(String message,
-      {int? statusCode, Map<String, dynamic>? data}) = _$ErrorResponse<T>;
+  factory ErrorResponse(final String message,
+      {final int? statusCode,
+      final Map<String, dynamic>? data}) = _$ErrorResponse<T>;
 
-  String get message => throw _privateConstructorUsedError;
-  int? get statusCode => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get data => throw _privateConstructorUsedError;
+  String get message;
+  int? get statusCode;
+  @override
+  Map<String, dynamic>? get data;
   @JsonKey(ignore: true)
-  $ErrorResponseCopyWith<T, ErrorResponse<T>> get copyWith =>
+  _$$ErrorResponseCopyWith<T, _$ErrorResponse<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 Entry _$EntryFromJson(Map<String, dynamic> json) {
   return _Entry.fromJson(json);
 }
-
-/// @nodoc
-class _$EntryTearOff {
-  const _$EntryTearOff();
-
-  _Entry call(
-      {required String collectionName, required Identifier id, Object? data}) {
-    return _Entry(
-      collectionName: collectionName,
-      id: id,
-      data: data,
-    );
-  }
-
-  Entry fromJson(Map<String, Object> json) {
-    return Entry.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Entry = _$EntryTearOff();
 
 /// @nodoc
 mixin _$Entry {
@@ -387,52 +411,58 @@ mixin _$Entry {
 /// @nodoc
 abstract class $EntryCopyWith<$Res> {
   factory $EntryCopyWith(Entry value, $Res Function(Entry) then) =
-      _$EntryCopyWithImpl<$Res>;
+      _$EntryCopyWithImpl<$Res, Entry>;
+  @useResult
   $Res call({String collectionName, Identifier id, Object? data});
 
   $IdentifierCopyWith<$Res> get id;
 }
 
 /// @nodoc
-class _$EntryCopyWithImpl<$Res> implements $EntryCopyWith<$Res> {
+class _$EntryCopyWithImpl<$Res, $Val extends Entry>
+    implements $EntryCopyWith<$Res> {
   _$EntryCopyWithImpl(this._value, this._then);
 
-  final Entry _value;
   // ignore: unused_field
-  final $Res Function(Entry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collectionName = freezed,
-    Object? id = freezed,
+    Object? collectionName = null,
+    Object? id = null,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      collectionName: collectionName == freezed
+      collectionName: null == collectionName
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as Identifier,
-      data: data == freezed ? _value.data : data,
-    ));
+      data: freezed == data ? _value.data : data,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $IdentifierCopyWith<$Res> get id {
     return $IdentifierCopyWith<$Res>(_value.id, (value) {
-      return _then(_value.copyWith(id: value));
+      return _then(_value.copyWith(id: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
-  factory _$EntryCopyWith(_Entry value, $Res Function(_Entry) then) =
-      __$EntryCopyWithImpl<$Res>;
+abstract class _$$_EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
+  factory _$$_EntryCopyWith(_$_Entry value, $Res Function(_$_Entry) then) =
+      __$$_EntryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String collectionName, Identifier id, Object? data});
 
   @override
@@ -440,30 +470,28 @@ abstract class _$EntryCopyWith<$Res> implements $EntryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res>
-    implements _$EntryCopyWith<$Res> {
-  __$EntryCopyWithImpl(_Entry _value, $Res Function(_Entry) _then)
-      : super(_value, (v) => _then(v as _Entry));
+class __$$_EntryCopyWithImpl<$Res> extends _$EntryCopyWithImpl<$Res, _$_Entry>
+    implements _$$_EntryCopyWith<$Res> {
+  __$$_EntryCopyWithImpl(_$_Entry _value, $Res Function(_$_Entry) _then)
+      : super(_value, _then);
 
-  @override
-  _Entry get _value => super._value as _Entry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collectionName = freezed,
-    Object? id = freezed,
+    Object? collectionName = null,
+    Object? id = null,
     Object? data = freezed,
   }) {
-    return _then(_Entry(
-      collectionName: collectionName == freezed
+    return _then(_$_Entry(
+      collectionName: null == collectionName
           ? _value.collectionName
           : collectionName // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as Identifier,
-      data: data == freezed ? _value.data : data,
+      data: freezed == data ? _value.data : data,
     ));
   }
 }
@@ -474,7 +502,7 @@ class _$_Entry implements _Entry {
   _$_Entry({required this.collectionName, required this.id, this.data});
 
   factory _$_Entry.fromJson(Map<String, dynamic> json) =>
-      _$_$_EntryFromJson(json);
+      _$$_EntryFromJson(json);
 
   @override
   final String collectionName;
@@ -491,95 +519,79 @@ class _$_Entry implements _Entry {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Entry &&
+        (other.runtimeType == runtimeType &&
+            other is _$_Entry &&
             (identical(other.collectionName, collectionName) ||
-                const DeepCollectionEquality()
-                    .equals(other.collectionName, collectionName)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+                other.collectionName == collectionName) &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(collectionName) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(data);
 
   @JsonKey(ignore: true)
   @override
-  _$EntryCopyWith<_Entry> get copyWith =>
-      __$EntryCopyWithImpl<_Entry>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, collectionName, id,
+      const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EntryCopyWith<_$_Entry> get copyWith =>
+      __$$_EntryCopyWithImpl<_$_Entry>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_EntryToJson(this);
+    return _$$_EntryToJson(
+      this,
+    );
   }
 }
 
 abstract class _Entry implements Entry {
   factory _Entry(
-      {required String collectionName,
-      required Identifier id,
-      Object? data}) = _$_Entry;
+      {required final String collectionName,
+      required final Identifier id,
+      final Object? data}) = _$_Entry;
 
   factory _Entry.fromJson(Map<String, dynamic> json) = _$_Entry.fromJson;
 
   @override
-  String get collectionName => throw _privateConstructorUsedError;
+  String get collectionName;
   @override
-  Identifier get id => throw _privateConstructorUsedError;
+  Identifier get id;
   @override
-  Object? get data => throw _privateConstructorUsedError;
+  Object? get data;
   @override
   @JsonKey(ignore: true)
-  _$EntryCopyWith<_Entry> get copyWith => throw _privateConstructorUsedError;
+  _$$_EntryCopyWith<_$_Entry> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Identifier _$IdentifierFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String) {
+  switch (json['runtimeType']) {
     case 'integer':
       return IntIdentifier.fromJson(json);
     case 'string':
       return StringIdentifier.fromJson(json);
 
     default:
-      throw FallThroughError();
+      throw CheckedFromJsonException(json, 'runtimeType', 'Identifier',
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
-
-/// @nodoc
-class _$IdentifierTearOff {
-  const _$IdentifierTearOff();
-
-  IntIdentifier integer(int id) {
-    return IntIdentifier(
-      id,
-    );
-  }
-
-  StringIdentifier string(String id) {
-    return StringIdentifier(
-      id,
-    );
-  }
-
-  Identifier fromJson(Map<String, Object> json) {
-    return Identifier.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Identifier = _$IdentifierTearOff();
 
 /// @nodoc
 mixin _$Identifier {
+  Object get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id) integer,
     required TResult Function(String id) string,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id)? integer,
+    TResult? Function(String id)? string,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -596,6 +608,12 @@ mixin _$Identifier {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(IntIdentifier value)? integer,
+    TResult? Function(StringIdentifier value)? string,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IntIdentifier value)? integer,
     TResult Function(StringIdentifier value)? string,
@@ -609,42 +627,44 @@ mixin _$Identifier {
 abstract class $IdentifierCopyWith<$Res> {
   factory $IdentifierCopyWith(
           Identifier value, $Res Function(Identifier) then) =
-      _$IdentifierCopyWithImpl<$Res>;
+      _$IdentifierCopyWithImpl<$Res, Identifier>;
 }
 
 /// @nodoc
-class _$IdentifierCopyWithImpl<$Res> implements $IdentifierCopyWith<$Res> {
+class _$IdentifierCopyWithImpl<$Res, $Val extends Identifier>
+    implements $IdentifierCopyWith<$Res> {
   _$IdentifierCopyWithImpl(this._value, this._then);
 
-  final Identifier _value;
   // ignore: unused_field
-  final $Res Function(Identifier) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class $IntIdentifierCopyWith<$Res> {
-  factory $IntIdentifierCopyWith(
-          IntIdentifier value, $Res Function(IntIdentifier) then) =
-      _$IntIdentifierCopyWithImpl<$Res>;
+abstract class _$$IntIdentifierCopyWith<$Res> {
+  factory _$$IntIdentifierCopyWith(
+          _$IntIdentifier value, $Res Function(_$IntIdentifier) then) =
+      __$$IntIdentifierCopyWithImpl<$Res>;
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class _$IntIdentifierCopyWithImpl<$Res> extends _$IdentifierCopyWithImpl<$Res>
-    implements $IntIdentifierCopyWith<$Res> {
-  _$IntIdentifierCopyWithImpl(
-      IntIdentifier _value, $Res Function(IntIdentifier) _then)
-      : super(_value, (v) => _then(v as IntIdentifier));
+class __$$IntIdentifierCopyWithImpl<$Res>
+    extends _$IdentifierCopyWithImpl<$Res, _$IntIdentifier>
+    implements _$$IntIdentifierCopyWith<$Res> {
+  __$$IntIdentifierCopyWithImpl(
+      _$IntIdentifier _value, $Res Function(_$IntIdentifier) _then)
+      : super(_value, _then);
 
-  @override
-  IntIdentifier get _value => super._value as IntIdentifier;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
-    return _then(IntIdentifier(
-      id == freezed
+    return _then(_$IntIdentifier(
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -655,13 +675,16 @@ class _$IntIdentifierCopyWithImpl<$Res> extends _$IdentifierCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$IntIdentifier implements IntIdentifier {
-  _$IntIdentifier(this.id);
+  _$IntIdentifier(this.id, {final String? $type}) : $type = $type ?? 'integer';
 
   factory _$IntIdentifier.fromJson(Map<String, dynamic> json) =>
-      _$_$IntIdentifierFromJson(json);
+      _$$IntIdentifierFromJson(json);
 
   @override
   final int id;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -671,19 +694,20 @@ class _$IntIdentifier implements IntIdentifier {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is IntIdentifier &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _$IntIdentifier &&
+            (identical(other.id, id) || other.id == id));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
 
   @JsonKey(ignore: true)
   @override
-  $IntIdentifierCopyWith<IntIdentifier> get copyWith =>
-      _$IntIdentifierCopyWithImpl<IntIdentifier>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IntIdentifierCopyWith<_$IntIdentifier> get copyWith =>
+      __$$IntIdentifierCopyWithImpl<_$IntIdentifier>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -692,6 +716,15 @@ class _$IntIdentifier implements IntIdentifier {
     required TResult Function(String id) string,
   }) {
     return integer(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id)? integer,
+    TResult? Function(String id)? string,
+  }) {
+    return integer?.call(id);
   }
 
   @override
@@ -718,6 +751,15 @@ class _$IntIdentifier implements IntIdentifier {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(IntIdentifier value)? integer,
+    TResult? Function(StringIdentifier value)? string,
+  }) {
+    return integer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IntIdentifier value)? integer,
     TResult Function(StringIdentifier value)? string,
@@ -731,47 +773,49 @@ class _$IntIdentifier implements IntIdentifier {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$IntIdentifierToJson(this)..['runtimeType'] = 'integer';
+    return _$$IntIdentifierToJson(
+      this,
+    );
   }
 }
 
 abstract class IntIdentifier implements Identifier {
-  factory IntIdentifier(int id) = _$IntIdentifier;
+  factory IntIdentifier(final int id) = _$IntIdentifier;
 
   factory IntIdentifier.fromJson(Map<String, dynamic> json) =
       _$IntIdentifier.fromJson;
 
-  int get id => throw _privateConstructorUsedError;
+  @override
+  int get id;
   @JsonKey(ignore: true)
-  $IntIdentifierCopyWith<IntIdentifier> get copyWith =>
+  _$$IntIdentifierCopyWith<_$IntIdentifier> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StringIdentifierCopyWith<$Res> {
-  factory $StringIdentifierCopyWith(
-          StringIdentifier value, $Res Function(StringIdentifier) then) =
-      _$StringIdentifierCopyWithImpl<$Res>;
+abstract class _$$StringIdentifierCopyWith<$Res> {
+  factory _$$StringIdentifierCopyWith(
+          _$StringIdentifier value, $Res Function(_$StringIdentifier) then) =
+      __$$StringIdentifierCopyWithImpl<$Res>;
+  @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class _$StringIdentifierCopyWithImpl<$Res>
-    extends _$IdentifierCopyWithImpl<$Res>
-    implements $StringIdentifierCopyWith<$Res> {
-  _$StringIdentifierCopyWithImpl(
-      StringIdentifier _value, $Res Function(StringIdentifier) _then)
-      : super(_value, (v) => _then(v as StringIdentifier));
+class __$$StringIdentifierCopyWithImpl<$Res>
+    extends _$IdentifierCopyWithImpl<$Res, _$StringIdentifier>
+    implements _$$StringIdentifierCopyWith<$Res> {
+  __$$StringIdentifierCopyWithImpl(
+      _$StringIdentifier _value, $Res Function(_$StringIdentifier) _then)
+      : super(_value, _then);
 
-  @override
-  StringIdentifier get _value => super._value as StringIdentifier;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
-    return _then(StringIdentifier(
-      id == freezed
+    return _then(_$StringIdentifier(
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
@@ -782,13 +826,17 @@ class _$StringIdentifierCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$StringIdentifier implements StringIdentifier {
-  _$StringIdentifier(this.id);
+  _$StringIdentifier(this.id, {final String? $type})
+      : $type = $type ?? 'string';
 
   factory _$StringIdentifier.fromJson(Map<String, dynamic> json) =>
-      _$_$StringIdentifierFromJson(json);
+      _$$StringIdentifierFromJson(json);
 
   @override
   final String id;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -798,19 +846,20 @@ class _$StringIdentifier implements StringIdentifier {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is StringIdentifier &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is _$StringIdentifier &&
+            (identical(other.id, id) || other.id == id));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
 
   @JsonKey(ignore: true)
   @override
-  $StringIdentifierCopyWith<StringIdentifier> get copyWith =>
-      _$StringIdentifierCopyWithImpl<StringIdentifier>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StringIdentifierCopyWith<_$StringIdentifier> get copyWith =>
+      __$$StringIdentifierCopyWithImpl<_$StringIdentifier>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -819,6 +868,15 @@ class _$StringIdentifier implements StringIdentifier {
     required TResult Function(String id) string,
   }) {
     return string(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id)? integer,
+    TResult? Function(String id)? string,
+  }) {
+    return string?.call(id);
   }
 
   @override
@@ -845,6 +903,15 @@ class _$StringIdentifier implements StringIdentifier {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(IntIdentifier value)? integer,
+    TResult? Function(StringIdentifier value)? string,
+  }) {
+    return string?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IntIdentifier value)? integer,
     TResult Function(StringIdentifier value)? string,
@@ -858,18 +925,21 @@ class _$StringIdentifier implements StringIdentifier {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$StringIdentifierToJson(this)..['runtimeType'] = 'string';
+    return _$$StringIdentifierToJson(
+      this,
+    );
   }
 }
 
 abstract class StringIdentifier implements Identifier {
-  factory StringIdentifier(String id) = _$StringIdentifier;
+  factory StringIdentifier(final String id) = _$StringIdentifier;
 
   factory StringIdentifier.fromJson(Map<String, dynamic> json) =
       _$StringIdentifier.fromJson;
 
-  String get id => throw _privateConstructorUsedError;
+  @override
+  String get id;
   @JsonKey(ignore: true)
-  $StringIdentifierCopyWith<StringIdentifier> get copyWith =>
+  _$$StringIdentifierCopyWith<_$StringIdentifier> get copyWith =>
       throw _privateConstructorUsedError;
 }
